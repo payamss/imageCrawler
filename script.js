@@ -2,12 +2,10 @@ const cherio = require('cherio');
 const request = require('request');
 const fs = require('fs');
 const axios = require('axios');
-
 const process = require('process');
 
 // Printing process.argv property value
 //console.log(process.argv);
-var WriteStream = fs.createWriteStream("ImagesLink.txt", "UTF-8");
 (async () => {
     console.log(process.argv[2]);
     var label = process.argv[2];
@@ -21,9 +19,6 @@ var WriteStream = fs.createWriteStream("ImagesLink.txt", "UTF-8");
                     var imgLinks = $(image).attr('src');
                     if (imgLinks.includes("https://")) {
                         const dir = `./Data/${label}`;
-                        console.log(imgLinks);
-                        WriteStream.write(imgLinks);
-                        WriteStream.write("\n");
                         i++;
                         await fs.promises.mkdir(dir, { recursive: true });
                         await download_image(imgLinks, label);
