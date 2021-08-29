@@ -42,7 +42,7 @@ const download_image = (url, label) =>
         response =>
             new Promise((resolve, reject) => {
                 response.data
-                    .pipe(fs.createWriteStream(`./Data/${label}/${label}.jpg`))
+                    .pipe(fs.createWriteStream(`./Data/${label}/1.jpg`))
                     .on('finish', () => resolve())
                     .on('error', e => reject(e));
             }),
